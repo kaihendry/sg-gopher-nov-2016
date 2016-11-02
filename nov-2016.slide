@@ -1,75 +1,52 @@
-CORS enables micro services on AWS
-AWS User Group Singapore (Mar 2016)
+Using Golang to statically generate your site
+Gophers Meetup #18 (November 2016)
 
-19:00 23 March 2016
-Tags: docker, caddy, CORS, AWS
+19:00 3 November 2016
+Tags: golang, html, static
 
 Kai Hendry
 hendry@iki.fi
+hendry@spuul.com
 http://hendry.iki.fi/
+https://devops.spuul.com/
 @kaihendry
+
+* Why static HTML?
+
+- [[https://twitter.com/slightlylate/status/789407395583700993]]
+- S3 + Cloudfront === blazen fast
+- Think the Google bot will grok your 5MB JS bundle?
+- SEO
 
 * Golang HTML templates
 
-https://golang.org/pkg/html/template/
+.link https://golang.org/pkg/html/template/
 
-* Client-side (browser) cross-origin requests
+- Fast
+- Automatic contextual escaping
 
-.link https://en.wikipedia.org/wiki/Cross-origin_resource_sharing
+* How most 2016 production sites look like nowadays
 
-.image http://s.natalian.org/2016-03-23/Flowchart_showing_Simple_and_Preflight_XHR.svg
+- API serving JSON responses
+- ReactJS
 
-* Headers & OPTIONS
+.code 2016-index.html
 
-	curl \
-		--verbose \
-		--request OPTIONS \
-		http://s.natalian.org/2016-03-20/rtest2.json \
-		--header 'Origin: http://bad.example.com' \
-		--header 'Access-Control-Request-Headers: Origin, Accept, Content-Type' \
-		--header 'Access-Control-Request-Method: GET'
+Lets throw in Golang to statify non-dynamic routes
 
-.link http://s.natalian.org/2016-03-23/accepted.txt
-.link http://s.natalian.org/2016-03-23/denied.txt
+* Tips
 
-.image http://s.natalian.org/2016-03-20/cors.png _ 1000
+.image http://s.natalian.org/2016-11-02/404.png _ 500
 
-* Fixing S3
+- [[https://github.com/ikeikeikeike/go-sitemap-generator/][/sitemap.txt]]
+- [[https://mholt.github.io/json-to-go/]]
+- [[https://github.com/davecheney/httpstat]]
 
-.html diff.html
 
-.image http://s.natalian.org/2016-03-23/1458699488_1918x1058.png _ 1000
+* Code demos
 
-* Access-Control-Allow-Origin: *
+.code templates/404/404.html
 
-For APIs, maybe we want to control access a little?
-
-- e.g. Access-Control-Allow-Origin: https://dabase.com
-
-.image http://s.natalian.org/2016-03-23/1458698037_1918x1058.png _ 1000
-
-* Use case
-
-We need to listen to our customers! From our statically generated site!
-
-.link https://natalian.org/stats.js
-.link http://dabase.com/blog/Openwrt_rescue/
-
-AJAX with CORS enables us to communicate with:
-
-.link https://feedback.dabase.com/
-
-* AWS EC2 / SES / Route 53 live demo!
-
-- Spawn a EC2 instance with Docker
-	aws ec2 run-instances --image-id ami-94aa68f7 --count 1 --instance-type t1.micro --key-name hendry --security-groups default
-- Copy in our data, with SES keys
-- Do DNS name for SSL with Route 53
-- Launch a Docker container
-
-* Take aways
-
-CORS is like a IP whitelist that enables the INTERNET OF THINGS
-
-It's not really a security feature. It allows browsers to ease same origin policy and
-it allows Web services to bless certain domains can use its services FROM THE BROWSER.
+- HTML template includes
+- [[https://github.com/kaihendry/lk/blob/master/main.go]]
+- [[https://github.com/kaihendry/toc]]
