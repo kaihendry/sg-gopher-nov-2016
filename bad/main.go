@@ -15,6 +15,8 @@ func check(err error) {
 
 func main() {
 
+	// Not good practice
+
 	paths1, err := filepath.Glob("../templates/404/*.html")
 	check(err)
 
@@ -23,7 +25,8 @@ func main() {
 
 	paths := append(paths1, paths2...)
 
-	templates := template.Must(template.New("main").ParseFiles(paths...))
+	templates, err := template.New("main").ParseFiles(paths...)
+	check(err)
 
 	err = templates.ExecuteTemplate(os.Stdout, "404.html", nil)
 	check(err)

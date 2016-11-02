@@ -1,4 +1,4 @@
-Using Golang to statically generate your site
+Using Golang to statically generate your Web site
 Gophers Meetup #18 (November 2016)
 
 19:00 3 November 2016
@@ -42,11 +42,11 @@ Lets throw in Golang to statify non-dynamic routes
 - [[https://mholt.github.io/json-to-go/]]
 - [[https://github.com/davecheney/httpstat]]
 
-
 * Code demos
 
 .code templates/404/404.html
 
 - HTML template includes
+- [[https://github.com/kaihendry/blog]]
 - [[https://github.com/kaihendry/lk/blob/master/main.go]]
 - [[https://github.com/kaihendry/toc]]
