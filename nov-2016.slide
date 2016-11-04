@@ -17,6 +17,7 @@ https://devops.spuul.com/
 - S3 + Cloudfront === blazen fast
 - Think the Google bot will grok your 5MB JS bundle?
 - SEO
+- ISOMORPHISM IS REALLY HARD (phantomJS is a joke, please)
 
 * Golang HTML templates
 
@@ -28,7 +29,7 @@ https://devops.spuul.com/
 * How most 2016 production sites look like nowadays
 
 - API serving JSON responses
-- ReactJS
+- [[https://facebook.github.io/react/blog/2016/04/07/react-v15.html#major-changes][ReactJS]]
 
 .code 2016-index.html
 
@@ -40,7 +41,15 @@ Lets throw in Golang to statify non-dynamic routes
 
 - [[https://github.com/ikeikeikeike/go-sitemap-generator/][/sitemap.txt]]
 - [[https://mholt.github.io/json-to-go/]]
+- Design URL routes with trailing slashes to avoid costly redirects !
+
+* Test
+
+- [[https://github.com/addyosmani/psi][Page speed insights]]
+- `time curl`
+- httping
 - [[https://github.com/davecheney/httpstat]]
+- [[https://github.com/GoogleChrome/lighthouse/][lighthouse]] for [[https://cloudfour.com/thinks/progressive-web-apps-simply-make-sense/][PWA]]
 
 * Code demos
 
